@@ -4,7 +4,7 @@ import { urlShort, getOriginalUrl } from "./Controllers/url.js";
 
 
 const app = express();
-const port = 3001;
+
 
 app.use(express.urlencoded({extended:true}))
 
