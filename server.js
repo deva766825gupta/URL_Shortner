@@ -15,8 +15,9 @@ app.set("views", path.join(__dirname, "views")); // Ensure correct path
 
 app.use(express.urlencoded({ extended: true }));
 
+// ✅ Use MongoDB Atlas instead of localhost
 mongoose
-  .connect(process.env.MONGO_URI, { dbName: "urlShort" }) // Use MongoDB Atlas
+  .connect(process.env.MONGO_URI, { dbName: "urlShort" })
   .then(() => console.log("MongoDB Connected"))
   .catch((error) => console.log(error));
 
@@ -30,4 +31,5 @@ app.post("/shorten", urlShort);
 // Redirect to original URL using short URL
 app.get("/:shortCode", getOriginalUrl);
 
-export default app; // ✅ Required for Vercel deployment
+// ✅ Instead of app.listen(), export app for Vercel
+export default app;
